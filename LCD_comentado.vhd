@@ -7,12 +7,12 @@ entity LCD is
         fclk : natural := 50_000_000  -- 50 MHz clock input
     );
     port (
-      line_0  : in string(1 to 16);  -- First line of array (16 characters)
-      line_1  : in string(1 to 16);  -- Second line of array (16 characters)
-        clk     : in bit;              -- System clock
-        RS, RW  : out bit;             -- LCD control signals: Register Select and Read/Write
-        E       : buffer bit;          -- LCD Enable signal (toggled to latch commands)
-        DB      : out std_logic_vector(7 downto 0)  -- 8-bit data bus for LCD
+        line_0    : in string(1 to 16);  -- First line of array (16 characters)
+        line_1    : in string(1 to 16);  -- Second line of array (16 characters)
+        clk       : in bit;              -- System clock
+        RS, RW    : out bit;             -- LCD control signals: Register Select and Read/Write
+        E         : buffer bit;          -- LCD Enable signal (toggled to latch commands)
+        DB        : out std_logic_vector(7 downto 0)  -- 8-bit data bus for LCD
     );
 end LCD;
 
@@ -46,7 +46,9 @@ end process;
 process (E)
 begin
     if (E'event and E = '1') then
-        -- Optional reset section could go here
+        -- Optional reset logic could go here
+        pr_state <= 0; 
+		pr_index <= 0; 
         pr_state <= nx_state;
         pr_index <= index;
     end if;
@@ -95,31 +97,31 @@ begin
             RS <= '0'; RW <= '0';
             DB <= "10000000";  -- LCD command for Line 0, position 0
             nx_state <= pr_state + 1;
-            index <= 0;
+            index <= 0; -- Reset index to the first position (character)
 
         when 7 =>  -- Write characters to Line 0
             ascii_char := std_logic_vector(to_unsigned(character'pos(line_0(index)), 8));
             RS <= '1'; RW <= '0';
             DB <= ascii_char;
-            index <= pr_index + 1;
+            index <= pr_index + 1; -- Changes to the next character of line_0
             nx_state <= 7;
-            if pr_index = 15 then
+            if pr_index = 15 then -- Stops writing line_0 and changes to the next state
                 nx_state <= pr_state + 1;
             end if;
 
         when 8 =>  -- Set DDRAM address to start of line 1
             RS <= '0'; RW <= '0';
             DB <= "11000000";  -- LCD command for Line 1, position 0
-            index <= 0;
+            index <= 0; -- Reset index to the first position (character)
             nx_state <= pr_state + 1;
 
         when 9 =>  -- Write characters to Line 1
             ascii_char := std_logic_vector(to_unsigned(character'pos(line_1(index)), 8));
             RS <= '1'; RW <= '0';
             DB <= ascii_char;
-            index <= pr_index + 1;
+            index <= pr_index + 1; -- Changes to the next character of line_0
             nx_state <= 9;
-            if pr_index = 15 then
+            if pr_index = 15 then -- Stops writing line_0 and changes to the next state
                 nx_state <= pr_state + 1;
             end if;
 
