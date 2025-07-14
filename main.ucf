@@ -1,0 +1,69 @@
+# PlanAhead Generated physical constraints 
+
+NET "DB[7]" LOC = Y15;
+NET "DB[6]" LOC = AB16;
+NET "DB[5]" LOC = Y16;
+NET "DB[4]" LOC = AA12;
+NET "DB[3]" LOC = AB12;
+NET "DB[2]" LOC = AB17;
+NET "DB[1]" LOC = AB18;
+NET "DB[0]" LOC = Y13;
+
+# PlanAhead Generated IO constraints 
+
+NET "DB[7]" DRIVE = 8;
+NET "DB[6]" DRIVE = 8;
+NET "DB[5]" DRIVE = 8;
+NET "DB[4]" DRIVE = 8;
+NET "DB[3]" DRIVE = 8;
+NET "DB[2]" DRIVE = 8;
+NET "DB[1]" DRIVE = 8;
+NET "DB[0]" DRIVE = 8;
+NET "DB[7]" IOSTANDARD = LVCMOS33;
+NET "DB[6]" IOSTANDARD = LVCMOS33;
+NET "DB[5]" IOSTANDARD = LVCMOS33;
+NET "DB[4]" IOSTANDARD = LVCMOS33;
+NET "DB[3]" IOSTANDARD = LVCMOS33;
+NET "DB[2]" IOSTANDARD = LVCMOS33;
+NET "DB[1]" IOSTANDARD = LVCMOS33;
+NET "DB[0]" IOSTANDARD = LVCMOS33;
+
+# PlanAhead Generated physical constraints 
+
+NET "clk" LOC = E12;
+NET "E" LOC = AB4;
+NET "RW" LOC = W13;
+NET "RS" LOC = Y14;
+
+# PlanAhead Generated IO constraints 
+
+NET "E" DRIVE = 8;
+NET "RS" DRIVE = 8;
+NET "RW" DRIVE = 8;
+NET "clk" IOSTANDARD = LVCMOS33;
+NET "E" IOSTANDARD = LVCMOS33;
+NET "ps2_clk" IOSTANDARD = LVCMOS33;
+NET "ps2_data" IOSTANDARD = LVCMOS33;
+NET "RS" IOSTANDARD = LVCMOS33;
+NET "RW" IOSTANDARD = LVCMOS33;
+NET "leds[7]" IOSTANDARD = LVCMOS33;
+NET "leds[6]" IOSTANDARD = LVCMOS33;
+NET "leds[5]" IOSTANDARD = LVCMOS33;
+NET "leds[4]" IOSTANDARD = LVCMOS33;
+NET "leds[3]" IOSTANDARD = LVCMOS33;
+NET "leds[2]" IOSTANDARD = LVCMOS33;
+NET "leds[1]" IOSTANDARD = LVCMOS33;
+NET "leds[0]" IOSTANDARD = LVCMOS33;
+
+# PlanAhead Generated physical constraints 
+
+NET "leds[7]" LOC = W21;
+NET "leds[6]" LOC = Y22;
+NET "leds[5]" LOC = V20;
+NET "leds[4]" LOC = V19;
+NET "leds[3]" LOC = U19;
+NET "leds[2]" LOC = U20;
+NET "leds[1]" LOC = T19;
+NET "leds[0]" LOC = R20;
+NET "ps2_clk" LOC = W12;
+NET "ps2_data" LOC = V11; 
